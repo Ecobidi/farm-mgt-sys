@@ -1,0 +1,53 @@
+<%- include ('partials/top') %>
+
+    <div class="row space pb-0 mb-4 px-2 border-bottom">
+      <div class="col-12 d-flex justify-content-between align-items-center underline pb-2">
+        <h3 class="title">Customers</h3>
+        <div>
+          <a href="/customers/new" class="btn btn-success">Add Customer</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row px-2">
+      <div class="col-12">
+        <form id="search-form" method="GET" action="/customers?" class="form-inline">
+          <div class="form-group mb-4">
+            <input required type="text" name="search" id="search-box" class="form-control" placeholder="Search by customer name...">
+            <button type="submit" class="btn btn-info">Search</button>
+          </div>
+        </form>
+        <h5 class="font-weight-normal text-center text-white bg-success p-2 m-0 table-top">List of Customers</h5>
+        <table class="table table-bordered table-striped">
+          <thead class="font-weight-normal">
+            <tr>
+              <td>First Name</td>
+              <td>Other Names</td>
+              <td>Residential Address</td>
+              <td>Mobile Phone</td>
+              <td>Email</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% customers.forEach((m) => { %>
+              <tr>
+                <td><%= m.surname %></td>
+                <td><%= m.other_names %></td>
+                <td><%= m.address %></td>
+                <td><%= m.phone %></td>
+                <td><%= m.email %></td>
+                <td>
+                  <a href='<%= "/customers/remove/" + m._id %>' class="btn btn-sm btn-danger">Remove</a>
+                </td>
+              </tr>
+            <% }) %>          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</div> 
+
+<%- include ('partials/bottom') %>

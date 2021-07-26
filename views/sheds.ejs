@@ -1,0 +1,47 @@
+<%- include ('partials/top') %>
+
+    <div class="row space pb-0 mb-4 px-2 border-bottom">
+      <div class="col-12 d-flex justify-content-between align-items-center underline pb-2">
+        <h3 class="title">Sheds</h3>
+        <div>
+          <a href="/sheds/new" class="btn btn-success">Add New Shed</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <form id="search-form" method="GET" action="/sheds?" class="form-inline bordered">
+          <div class="form-group mb-4 text-white">
+            <input required type="text" name="search" class="form-control" placeholder="shed name or number ...">
+            <button type="submit" class="btn btn-info">Search</button>
+          </div>
+        </form>
+        <h4 class="font-weight-light text-center text-white bg-primary p-2 m-0 table-top">List of Sheds</h4>
+        <table class="table table-bordered table-striped">
+          <thead class="font-weight-normal">
+            <tr>
+              <td>Shed Name</td>
+              <td>Shed Number</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% sheds.forEach((m) => { %>
+              <tr>
+                <td><%= m.shed_name %></td>
+                <td><%= m.shed_number %></td>
+                <td>
+                  <a href='<%= "/sheds/remove/" + m._id %>' class="btn btn-sm btn-danger">Remove</a>
+                </td>
+              </tr>
+            <% }) %>          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</div> 
+
+<%- include ('partials/bottom') %>
